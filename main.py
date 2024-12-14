@@ -9,13 +9,20 @@ from tkinter import messagebox
 def rename_callback(folder, mask, start, end):
     """Колбэк для обработки данных и запуска переименования файлов"""
     try:
-        start, end = validate_inputs(folder, mask, start, end)  # Проверяем входные данные
-        process_rename(folder, mask, start, end)  # Запускаем переименование
-        messagebox.showinfo("Успех", "Файлы успешно переименованы!")  # Показываем сообщение об успехе
+        # Проверяем входные данные
+        start, end = validate_inputs(folder, mask, start, end)  
+        # Запускаем переименование
+        process_rename(folder, mask, start, end)  
+        # Показываем сообщение об успехе
+        messagebox.showinfo("Успех", "Файлы успешно переименованы!")  
     except Exception as e:
-        messagebox.showerror("Ошибка", str(e))  # Показываем сообщение об ошибке
+        # Показываем сообщение об ошибке
+        messagebox.showerror("Ошибка", str(e))  
 
 if __name__ == "__main__":
-    root = tk.Tk()  # Создаем главное окно приложения
-    app = FileRenamerApp(root, rename_callback)  # Инициализируем приложение
-    root.mainloop()  # Запускаем цикл обработки событий
+    # Создаем главное окно приложения
+    root = tk.Tk()  
+    # Инициализируем приложение
+    app = FileRenamerApp(root, rename_callback)
+    # Запускаем цикл обработки событий  
+    root.mainloop()  
