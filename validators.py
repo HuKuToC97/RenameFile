@@ -17,8 +17,8 @@ def validate_inputs(folder, mask, start, end):
     """
     if not os.path.exists(folder):
         raise ValueError("Указанный путь не существует.")
-    if not mask or '#' not in mask:
-        raise ValueError("Маска должна содержать символ '#'.")
+    if not mask or '{number}' not in mask:
+        raise ValueError("Маска должна содержать символ '{number}'.")
     try:
         start = int(start)
         end = int(end)

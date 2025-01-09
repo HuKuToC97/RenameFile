@@ -16,7 +16,7 @@ def process_rename(folder, mask, start, end):
     :param start: Начальное число
     :param end: Конечное число
     """
-    regex_pattern = re.escape(mask).replace('\\#', '(\\d+)').replace('\\*', '.*')
+    regex_pattern = re.escape(mask).replace('\{number\}', '(\\d+)').replace('\{name_file\}', '.*')
     regex = re.compile(f"^{regex_pattern}$")
 
     files_to_rename = [f for f in os.listdir(folder) if regex.match(f)]
@@ -32,7 +32,8 @@ def process_rename(folder, mask, start, end):
         match = regex.match(filename)
         if match:
             old_number = int(match.group(1))
+            name_part = filename[len(match.group(0)):]
             new_number = old_number + difference
-            new_filename = regex.sub(str(new_number), filename, 1)
+            new_filename = f"{new_number}{name_part}"
             os.rename(os.path.join(folder, filename), os.path.join(folder, new_filename))
             logging.info(f"{filename} -> {new_filename}")

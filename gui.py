@@ -32,7 +32,7 @@ class FileRenamerApp:
         tk.Button(master, text="Обзор", command=self.browse_folder).pack(anchor='w', padx=10, pady=5)
 
         # Элементы интерфейса для ввода маски-шаблона
-        tk.Label(master, text="Введите маску-шаблон имени файлов:").pack(anchor='w', padx=10, pady=5)
+        tk.Label(master, text="Введите маску-шаблон имени файлов (например, {number}_{name_file}.txt):").pack(anchor='w', padx=10, pady=5)
         self.mask_entry = tk.Entry(master, width=50)
         self.mask_entry.pack(anchor='w', padx=10)
 
