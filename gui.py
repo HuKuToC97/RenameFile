@@ -1,10 +1,22 @@
 # gui.py
+
+"""
+gui.py - Модуль, содержащий описание пользовательского интерфейса программы.
+"""
 import tkinter as tk
 from tkinter import filedialog, messagebox
 
 class FileRenamerApp:
+    """
+    Класс, отвечающий за создание пользовательского интерфейса приложения.
+    """
     def __init__(self, master, rename_callback):
-        """Инициализация интерфейса приложения"""
+        """
+        Инициализация интерфейса приложения.
+        
+        :param master: Главное окно приложения
+        :param rename_callback: Колбэк для обработки данных
+        """
         self.master = master
         self.master.title("File Renamer")
         self.master.geometry("600x400")
@@ -37,13 +49,17 @@ class FileRenamerApp:
         tk.Button(master, text="Переименовать", command=self.rename_files).pack(anchor='w', padx=10, pady=10)
 
     def browse_folder(self):
-        """Открывает диалоговое окно для выбора папки и сохраняет путь"""
+        """
+        Открывает диалоговое окно для выбора папки и сохраняет путь.
+        """
         folder_selected = filedialog.askdirectory()
         if folder_selected:
             self.folder_path.set(folder_selected)
 
     def rename_files(self):
-        """Передает введенные данные в колбэк для переименования файлов"""
+        """
+        Передает введенные данные в колбэк для переименования файлов.
+        """
         folder = self.folder_path.get()
         mask = self.mask_entry.get()
         start_number = self.start_number_entry.get()

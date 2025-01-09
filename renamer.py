@@ -1,10 +1,21 @@
 # renamer.py
+
+"""
+renamer.py - Модуль, реализующий логику переименования файлов в папке.
+"""
 import os
 import re
 import logging
 
 def process_rename(folder, mask, start, end):
-    """Основная логика переименования файлов"""
+    """
+    Основная логика переименования файлов.
+
+    :param folder: Путь к папке
+    :param mask: Маска для поиска файлов
+    :param start: Начальное число
+    :param end: Конечное число
+    """
     regex_pattern = re.escape(mask).replace('\\#', '(\\d+)').replace('\\*', '.*')
     regex = re.compile(f"^{regex_pattern}$")
 

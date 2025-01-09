@@ -1,3 +1,8 @@
+# tests/test_validators.py
+
+"""
+tests/test_validators.py - Тесты для модуля validators.
+"""
 import unittest
 from validators import validate_inputs
 

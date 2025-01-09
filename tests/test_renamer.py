@@ -1,3 +1,8 @@
+# tests/test_renamer.py
+
+"""
+tests/test_renamer.py - Тесты для модуля renamer.
+"""
 import unittest
 import os
 from unittest.mock import patch

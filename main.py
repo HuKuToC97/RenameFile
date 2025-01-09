@@ -1,4 +1,9 @@
 # main.py
+
+"""
+main.py - Основной модуль программы. 
+Содержит настройку логирования и управление основным окном приложения.
+"""
 import tkinter as tk
 from gui import FileRenamerApp
 from renamer import process_rename
@@ -15,7 +20,14 @@ logging.basicConfig(
 )
 
 def rename_callback(folder, mask, start, end):
-    """Колбэк для обработки данных и запуска переименования файлов"""
+    """
+    Колбэк для обработки данных и запуска переименования файлов.
+    
+    :param folder: Путь к папке
+    :param mask: Маска для поиска файлов
+    :param start: Начальное число
+    :param end: Конечное число
+    """
     try:
         # Проверяем входные данные
         start, end = validate_inputs(folder, mask, start, end)
