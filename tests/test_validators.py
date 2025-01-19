@@ -1,5 +1,4 @@
 # tests/test_validators.py
-
 """
 tests/test_validators.py - Тесты для модуля validators.
 """

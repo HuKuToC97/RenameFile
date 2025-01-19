@@ -1,20 +1,19 @@
 # validators.py
-
 """
 validators.py - Модуль для проверки корректности входных данных.
 """
 import os
 from config import NUMBER_PLACEHOLDER
 
-def validate_inputs(folder, mask, start, end):
+def validate_inputs(folder, mask, start_number, replace_number):
     """
     Проверка корректности входных данных.
 
     :param folder: Путь к папке
     :param mask: Маска для поиска файлов
-    :param start: Начальное число
-    :param end: Конечное число
-    :return: Проверенные и преобразованные значения start и end
+    :param start_number: Число, с которого начать переименование
+    :param replace_number: Число, на которое заменить значение
+    :return: Проверенные и преобразованные значения start_number и replace_number
     """
     # Проверяем существование указанного пути
     if not os.path.exists(folder):
@@ -22,11 +21,11 @@ def validate_inputs(folder, mask, start, end):
     # Проверяем, что маска содержит обязательный плейсхолдер
     if not mask or NUMBER_PLACEHOLDER not in mask:
         raise ValueError(f"Маска должна содержать символ '{NUMBER_PLACEHOLDER}'.")
-    # Проверяем, что начальное и конечное числа являются целыми числами
+    # Проверяем, что стартовое и заменяющее числа являются целыми числами
     try:
-        start = int(start)
-        end = int(end)
+        start_number = int(start_number)
+        replace_number = int(replace_number)
     except ValueError:
         raise ValueError("Поля для чисел должны содержать только целые числа.")
     # Возвращаем проверенные значения
-    return start, end
+    return start_number, replace_number

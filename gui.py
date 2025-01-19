@@ -1,5 +1,4 @@
 # gui.py
-
 """
 gui.py - Модуль, содержащий описание пользовательского интерфейса программы.
 """
@@ -45,14 +44,14 @@ class FileRenamerApp:
         self.mask_entry.pack(anchor='w', padx=10)
         tk.Button(master, text="Вставить из буфера обмена", command=self.paste_mask).pack(anchor='w', padx=10, pady=5)
 
-        # Создаем поля для ввода начального и конечного чисел
-        tk.Label(master, text="Введите начальное число:").pack(anchor='w', padx=10, pady=5)
+        # Создаем поля для ввода начального и заменяющего числа
+        tk.Label(master, text="Введите число, с которого начать переименование:").pack(anchor='w', padx=10, pady=5)
         self.start_number_entry = tk.Entry(master, width=20)
         self.start_number_entry.pack(anchor='w', padx=10)
 
-        tk.Label(master, text="Введите конечное число:").pack(anchor='w', padx=10, pady=5)
-        self.end_number_entry = tk.Entry(master, width=20)
-        self.end_number_entry.pack(anchor='w', padx=10)
+        tk.Label(master, text="Введите число, на которое заменить значение:").pack(anchor='w', padx=10, pady=5)
+        self.replace_number_entry = tk.Entry(master, width=20)
+        self.replace_number_entry.pack(anchor='w', padx=10)
 
         # Создаем кнопку для запуска процесса переименования
         tk.Button(master, text="Переименовать", command=self.rename_files).pack(anchor='w', padx=10, pady=10)
@@ -82,5 +81,5 @@ class FileRenamerApp:
         folder = self.folder_path.get()
         mask = self.mask_entry.get()
         start_number = self.start_number_entry.get()
-        end_number = self.end_number_entry.get()
-        self.rename_callback(folder, mask, start_number, end_number)
+        replace_number = self.replace_number_entry.get()
+        self.rename_callback(folder, mask, start_number, replace_number)

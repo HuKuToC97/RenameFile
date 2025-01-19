@@ -1,5 +1,4 @@
 # tests/test_renamer.py
-
 """
 tests/test_renamer.py - Тесты для модуля renamer.
 """

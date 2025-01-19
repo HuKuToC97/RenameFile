@@ -1,5 +1,4 @@
 # main.py
-
 """
 main.py - Основной модуль программы. 
 Содержит настройку логирования и управление основным окном приложения.
@@ -21,22 +20,22 @@ logging.basicConfig(
 )
 
 # Функция-колбэк для обработки данных из интерфейса и запуска логики переименования
-def rename_callback(folder, mask, start, end):
+def rename_callback(folder, mask, start_number, replace_number):
     """
     Колбэк для обработки данных и запуска переименования файлов.
     
     :param folder: Путь к папке
     :param mask: Маска для поиска файлов
-    :param start: Начальное число
-    :param end: Конечное число
+    :param start_number: Число, с которого начать переименование
+    :param replace_number: Число, на которое заменить значение
     """
     try:
         # Проверяем входные данные на корректность
-        start, end = validate_inputs(folder, mask, start, end)
+        start_number, replace_number = validate_inputs(folder, mask, start_number, replace_number)
         # Логируем начало переименования с указанием папки и шаблона
         logging.info(f"Начало переименования в папке {folder} с шаблоном {mask}")
         # Запускаем процесс переименования
-        process_rename(folder, mask, start, end)
+        process_rename(folder, mask, start_number, replace_number)
         # Показываем сообщение об успешном завершении процесса
         messagebox.showinfo("Успех", "Файлы успешно переименованы!")
         # Логируем успешное завершение

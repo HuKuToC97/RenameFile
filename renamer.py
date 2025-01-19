@@ -1,5 +1,4 @@
 # renamer.py
-
 """
 renamer.py - Модуль, реализующий логику переименования файлов в папке.
 """
@@ -8,14 +7,14 @@ import re
 import logging
 from config import NUMBER_PLACEHOLDER, NAME_FILE_PLACEHOLDER
 
-def process_rename(folder, mask, start, end):
+def process_rename(folder, mask, start_number, replace_number):
     """
     Основная логика переименования файлов.
 
     :param folder: Путь к папке
     :param mask: Маска для поиска файлов
-    :param start: Начальное число
-    :param end: Конечное число
+    :param start_number: Число, с которого начать переименование
+    :param replace_number: Число, на которое заменить значение
     """
     # Заменяем плейсхолдеры {number} и {name_file} на соответствующие части регулярного выражения
     regex_pattern = mask.replace(NUMBER_PLACEHOLDER, '(\\d+)').replace(NAME_FILE_PLACEHOLDER, '(.*)')
@@ -36,9 +35,9 @@ def process_rename(folder, mask, start, end):
         logging.error("Не найдено файлов, соответствующих маске.")
         raise FileNotFoundError("Не найдено файлов, соответствующих маске.")
 
-    # Вычисляем разницу между начальным и конечным числом
-    difference = int(end) - int(start)
-    logging.info(f"Разница между начальным и конечным числом: {difference}")  # Логируем вычисленную разницу
+    # Вычисляем разницу между стартовым и заменяющим числами
+    difference = int(replace_number) - int(start_number)
+    logging.info(f"Разница между стартовым и заменяющим числами: {difference}")  # Логируем вычисленную разницу
 
     # Проходим по каждому файлу и переименовываем его
     for filename in files_to_rename:
