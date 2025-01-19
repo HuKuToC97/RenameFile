@@ -37,7 +37,7 @@ if __name__ == "__main__":
     folder_for_create_file = r"F:\УЧЕБА GB\Python\test"  # Укажи путь к папке, где нужно создать файлы
     mask = "{num}.file{num}.txt"  # Шаблон имен файлов с подстановкой номера
     count_files = 10  # Количество файлов для создания
-    text_in_created_files = "Тестовое содержимое файла."  # Текст, который будет записан в каждый файл
+    text_in_created_files = "{num}"  # Текст, который будет записан в каждый файл
     
     # Вызываем функцию для создания файлов
     generate_files(folder_for_create_file, mask, count_files, text_in_created_files)
